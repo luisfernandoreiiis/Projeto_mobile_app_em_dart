@@ -5,6 +5,7 @@ class ButtonWidget extends StatefulWidget {
   final String label;
   final double? width;
   final double? height;
+  final double border;
 
   const ButtonWidget({
     super.key,
@@ -12,6 +13,7 @@ class ButtonWidget extends StatefulWidget {
     required this.onPressed,
     this.width,
     this.height = 50,
+    this.border = 20,
   });
 
   @override
@@ -26,9 +28,9 @@ class _ButtonWidgetState extends State<ButtonWidget> {
       child: Container(
         width: widget.width,
         height: widget.height,
-        decoration: const BoxDecoration(
-          color: Color.fromARGB(255, 0, 129, 194),
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 0, 129, 194),
+          borderRadius: BorderRadius.all(Radius.circular(widget.border)),
         ),
         child: Center(
           child: Text(

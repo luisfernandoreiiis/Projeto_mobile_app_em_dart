@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1021493080564",
+    "project_id": "projeto-app-san-36957",
+    "storage_bucket": "projeto-app-san-36957.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021493080564:android:2c6695e10c2376d6ee89a1",
+        "android_client_info": {
+          "package_name": "com.company.Aplicativo_san"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoUzwFg6YBSKQ9Dh_KVcP0bYl_rPK2fIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,33 +1,48 @@
+import 'dados.dart';
+import 'falta_de_agua.dart';
 import 'home.dart';
+import 'ligação_nova.dart';
+import 'vazamento.dart';
 import 'widget/button.dart';
+import 'widget/textefield.dart';
 import 'package:flutter/material.dart';
 
-class Ligacao extends StatelessWidget {
-  const Ligacao({super.key});
+// ignore: camel_case_types, must_be_immutable
+class pageInserir extends StatelessWidget {
+  int escolha;
+
+  pageInserir(this.escolha, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      title: 'Ligacao Nova',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: LigacaoPage(),
+      home: pageinserindoDados(escolha),
     );
   }
 }
 
-class LigacaoPage extends StatefulWidget {
-  LigacaoPage({super.key});
+// ignore: camel_case_types, must_be_immutable
+class pageinserindoDados extends StatefulWidget {
+  int escolha;
+  pageinserindoDados(this.escolha, {super.key});
 
   @override
-  State<LigacaoPage> createState() => _LigacaoPageState();
+  // ignore: no_logic_in_create_state
+  State<pageinserindoDados> createState() => _pageinserindoDados(escolha);
 }
 
-class _LigacaoPageState extends State<LigacaoPage> {
+// ignore: camel_case_types
+class _pageinserindoDados extends State<pageinserindoDados> {
+  int escolha;
+
+  _pageinserindoDados(this.escolha);
+  Dados dadosPessoais = Dados();
 
   @override
   Widget build(BuildContext context) {
@@ -42,14 +57,22 @@ class _LigacaoPageState extends State<LigacaoPage> {
               children: [
                 const Padding(padding: EdgeInsets.all(8)),
                 const Text(
-                  'Ligação Nova',
+                  'Preencha os dados',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 30,
                     fontWeight: FontWeight.normal,
                   ),
                 ),
-                const Padding(padding: EdgeInsets.all(14)),
+                const Padding(padding: EdgeInsets.all(8)),
+                AddressForm(
+                  dadosPessoais.nomeController,
+                  dadosPessoais.ruaController,
+                  dadosPessoais.bairroController,
+                  dadosPessoais.complementoController,
+                  dadosPessoais.zipCodeController,
+                ),
+                const Padding(padding: EdgeInsets.all(8)),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -60,13 +83,7 @@ class _LigacaoPageState extends State<LigacaoPage> {
                       width: 150,
                       height: 46,
                       label: 'Ok',
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const MyApp()),
-                        );
-                      },
+                      onPressed: escolherPage,
                     ),
                   ],
                 ),
@@ -95,5 +112,32 @@ class _LigacaoPageState extends State<LigacaoPage> {
         ),
       ),
     );
+  }
+
+  void escolherPage() {
+    if (escolha == 1) {
+    print("AQUI");
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Ligacao(),
+        ),
+      );
+    } else if (escolha == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Vazamento(),
+        ),
+      );
+    } else if (escolha == 3) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Falta(),
+        ),
+      );
+    }
   }
 }
